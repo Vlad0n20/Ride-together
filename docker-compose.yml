@@ -4,6 +4,7 @@ services:
   db:
     image: postgres:13.0-alpine
     restart: always
+    container_name: db
     env_file: .env.db
     ports:
       - "5432:5432"
@@ -12,6 +13,7 @@ services:
   web:
     image: "backend"
     restart: always
+    container_name: app
     build:
       context: .
     env_file: .env
