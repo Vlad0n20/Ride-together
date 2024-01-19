@@ -7,7 +7,6 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 SECRET_KEY = config(
     'SECRET_KEY',
     default="w4i=!)qh(v$f#u!22neqb2@p^*s6p^icziussmghgz)$5q5gju"
@@ -24,8 +23,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-
 
 ]
 
@@ -60,7 +57,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': config("SQL_ENGINE", "django.db.backends.postgresql"),
@@ -71,7 +67,6 @@ DATABASES = {
         'PORT': config("SQL_PORT", "5432"),
     }
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -113,12 +108,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 # EMAIL_HOST = 'smtp.office365.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = config('EMAIl')
-EMAIL_HOST_PASSWORD = config('EMAIl_PASSWORD')
+EMAIL_HOST_USER = config('EMAIl', 'test@gmail.com')
+EMAIL_HOST_PASSWORD = config('EMAIl_PASSWORD', 'test@gmail')
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-DEFAULT_FROM_EMAIL = config('EMAIl')
-
+DEFAULT_FROM_EMAIL = config('EMAIl', 'test@gmail.com')
 
 import logging.config
 from django.utils.log import DEFAULT_LOGGING
@@ -196,7 +190,6 @@ CELERY_MAX_RETRIES = 3
 CELERY_TASK_ACKS_LATE = True
 CELERY_WORKER_PREFETCH_MULTIPLIER = 1
 CELERY_TASK_TIME_LIMIT = 120
-
 
 SWAGGER_SETTINGS = {
     'USE_SESSION_AUTH': False,
